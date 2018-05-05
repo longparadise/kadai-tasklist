@@ -1,22 +1,22 @@
-class MessagesController < ApplicationController
+class TasksController < ApplicationController
   def index
-    @messages = Message.all
+    @tasks = Task.all
   end
   
   def show
-    @message = Message.find(params[:id])
+    @task = Task.find(params[:id])
   end
   
   def new
-    @message = Message.new
+    @task = Task.new
   end
   
   def create
-    @message = Message.new(message_params)
+    @task = Task.new(task_params)
     
-    if @message.save
+    if @task.save
       flash[:success] = 'Taskが正常に投稿されました'
-      redirect_to @message
+      redirect_to @task
     else
       flash.now[:danger] = 'Taskが投稿されませんでした'
       render :new
@@ -24,15 +24,15 @@ class MessagesController < ApplicationController
   end
   
   def edit
-    @message = Message.find(params[:id])
+    @task = Task.find(params[:id])
   end
   
   def update
-    @message = Message.find(params[:id])
+    @task = Task.find(params[:id])
     
-    if @message.update(message_params)
+    if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
-      redirect_to @message
+      redirect_to @task
     else
       flash.now[:danger] = 'Taskは更新されませんでした'
       render :edit
@@ -40,16 +40,17 @@ class MessagesController < ApplicationController
   end 
   
   def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     
     flash[:success] = 'Taskは正常に削除されました'
-    redirect_to messages_url
+    redirect_to tasks_url
   end
   
   private
   
-  def message_params
-    params.require(:message).permit(:content)
+  def task_params
+    params.require(:task).permit(:content)
   end
+
 end
