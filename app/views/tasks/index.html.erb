@@ -13,8 +13,8 @@
       <% @tasks.each do |task| %>
         <tr>
           <td><%= link_to task.id, task %></td>
-          <tb><%= task.status %></tb>
-          <tb><%= task.content %></tb>
+          <td><%= task.status %></td>
+          <td><%= task.content %></td>
         </tr>
       <% end %>
     </tbody>
