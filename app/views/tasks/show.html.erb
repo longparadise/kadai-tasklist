@@ -1,25 +1,19 @@
-<% if logged_in? %>
+<h1>id: <%= @task.id %> のタスク詳細ページ</h1>
 
-  <h1>id: <%= @task.id %> のタスク詳細ページ</h1>
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @task.id %></td>
+  </tr>
+  <tr>
+    <th>ステータス</th>
+    <td><%= @task.status %></td>
+  </tr>
+  <tr>
+    <th>タスク</th>
+    <td><%= @task.content %></td>
+  </tr>
+</table>
 
-  <table class="table table-bordered">
-    <tr>
-      <th>id</th>
-      <td><%= @task.id %></td>
-    </tr>
-    <tr>
-      <th>ステータス</th>
-      <td><%= @task.status %></td>
-    </tr>
-    <tr>
-      <th>タスク</th>
-      <td><%= @task.content %></td>
-    </tr>
-  </table>
-
-  <%= link_to 'このタスクを編集する', edit_task_path(@task), class: 'btn btn-default' %>
-  <%= link_to 'このタスクを削除する', @task, method: :delete, data: {confirm: '本当に削除してよろしいですか？' }, class: ' btn btn-danger' %>
-  
-<% else %>
-  <%= link_to 'signup', signup_path %>
-<% end %>
+<%= link_to 'このタスクを編集する', edit_task_path(@task), class: 'btn btn-default' %>
+<%= link_to 'このタスクを削除する', @task, method: :delete, data: {confirm: '本当に削除してよろしいですか？' }, class: ' btn btn-danger' %>

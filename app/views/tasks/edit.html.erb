@@ -1,9 +1,3 @@
-<% if logged_in? %>
+<h1>id: <%= @task.id %> のタスク編集ページ</h1>
 
-  <h1>id: <%= @task.id %> のタスク編集ページ</h1>
-
-  <%= render 'form', task: @task %>
-  
-<% else %>
-  <%= link_to 'signup', signup_path %>
-<% end %>
+<%= render 'form', task: @task %>
